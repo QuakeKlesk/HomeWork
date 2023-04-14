@@ -1,21 +1,17 @@
 ﻿    // Задача 27: Напишите программу, которая принимает на вход число и выдаёт сумму цифр в числе.
 
-int SumNumber(int numberN)
+Console.WriteLine($"Введите число:");
+int userNumber = Convert.ToInt32(Console.ReadLine());
+int result = CountSummDigits(userNumber);
+Console.WriteLine($"Сумма цифр введенного числа {result}");
+
+int CountSummDigits(int num)
 {
-    int counter = Convert.ToString(numberN).Length;
-    int advance = 0;
-    int result = 0;
-
-    for (int i = 0; i < counter; i++)
+    int sum = 0;
+    while (num!=0)
     {
-     advance = numberN - numberN % 10;                                  // обнуляем последнюю цифру в числе
-     result = result + (numberN - advance);                             // последняя цифра + результат
-     numberN = numberN / 10;                                            // Убираем ноль из числа
+        sum +=num % 10;
+        num = num / 10;
     }
-Console.WriteLine($"Сумма цифр в заданном числе: {result}");
-return result;
+    return sum;
 }
-
-Console.Write("Введите число N: ");
-int N = Convert.ToInt32(Console.ReadLine());
-SumNumber(N);
